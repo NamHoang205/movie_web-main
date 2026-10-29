@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel - Movie Management</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Admin Panel</h1>
+      <a href="../home/index.html">Về trang chủ</a>
+    </header>
+
+    <main>
+      <div class="toolbar">
+        <h2>Danh sách phim</h2>
+        <button id="add-movie-btn">Thêm phim mới</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Poster</th>
+            <th>Tên phim</th>
+            <th>Thể loại</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="movies-table-body"></tbody>
+      </table>
+    </main>
+
+    <main>
+      <div class="toolbar">
+        <h2>Danh sách người dùng</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+            <th>Ngày tạo</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="users-table-body"></tbody>
+      </table>
+    </main>
+
+    <div id="movie-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modal-title">Thêm phim mới</h2>
+        <form id="movie-form">
+          <input type="hidden" id="movie-id" name="id" />
+          <label for="title">Tên phim:</label>
+          <input type="text" id="title" name="title" required />
+
+          <label for="genre">Thể loại:</label>
+          <input type="text" id="genre" name="genre" required />
+            
+          <label>Quốc gia:</label>
+          <input type="text" id="country" name="country" placeholder="Ví dụ: Mỹ, Hàn Quốc">
+
+          <label>Năm sản xuất:</label>
+          <input type="number" id="release_year" name="release_year" placeholder="Ví dụ: 2024">
+
+          <label>Đạo diễn:</label>
+          <input type="text" id="director" name="director" placeholder="Tên đạo diễn">
+
+          <label>Diễn viên:</label>
+          <input type="text" id="actors" name="actors" placeholder="Danh sách diễn viên">
+
+          <label for="duration_min">Thời lượng (phút):</label>
+          <input type="number" id="duration_min" name="duration_min" required />
+
+          <label for="poster_url">Đường dẫn Poster:</label>
+          <input
+            type="text"
+            id="poster_url"
+            name="poster_url"
+            placeholder="../img/ten_phim.jpg"
+            required
+          />
+
+          <label for="description">Mô tả:</label>
+          <textarea id="description" name="description" rows="4"></textarea>
+
+          <label for="trailer_url">Link Trailer (YouTube):</label>
+          <input type="text" id="trailer_url" name="trailer_url" />
+            
+          <label for="movie_source_url">Link Xem Phim (Nhúng/MP4):</label>
+		<input type="text" id="movie_source_url" name="movie_source_url" />
+
+          <button type="submit">Lưu lại</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

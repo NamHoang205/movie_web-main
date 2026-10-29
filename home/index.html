@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Xem Phim</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo"> <i class="bx bxs-movie"></i> Movies </a>
+      <div class="bx bx-menu" id="menu-icon"></div>
+
+      <ul class="navbar">
+        <li><a href="#home" class="home-active">Trang Chủ</a></li>
+        <li class="dropdown-li">
+            <a href="#movies">Thể Loại <i class='bx bx-chevron-down'></i></a>
+
+            <ul class="dropdown-menu">
+                <li><a href="../search/search.html?genre=Hành Động">Hành Động</a></li>
+                <li><a href="../search/search.html?genre=Khoa Học">Khoa Học</a></li>
+                <li><a href="../search/search.html?genre=Viễn Tưởng">Viễn Tưởng</a></li>
+            </ul>
+        </li>
+      </ul>
+
+      <a href="../search/search.html" class="search-btn">
+        <i class="bx bx-search-alt-2"></i> Tìm Kiếm & Lọc
+      </a>
+
+      <a href="../signup-in-main/login/index.html" class="btn">Đăng Nhập</a>
+    </header>
+
+    <section class="home swiper" id="home">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+    </section>
+
+    <section class="movies" id="movies">
+      <h2 class="heading">Danh Sách phim</h2>
+
+      <div class="movies-container"></div>
+      <div id="pagination-container"></div>
+    </section>
+    <section class="top-rated" id="top-rated">
+      <h2 class="heading">Phim Được Đánh Giá Cao</h2>
+      <div class="top-rated-container swiper">
+        <div class="swiper-wrapper"></div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <section class="main-layout" id="main-layout">
+        
+        <div class="left-content">
+            <h2 class="heading">Có thể bạn sẽ thích</h2>
+            <div class="coming-container swiper">
+                <div class="swiper-wrapper">
+                    </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <h2 class="heading">Bảng Xếp Hạng</h2>
+            <div class="ranking-list" id="ranking-list">
+                <div class="loading-rank">Đang tải...</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="newsletter" id="newsletter">
+      <h2>Đăng Ký Để Nhận <br />Bản Tin Mới</h2>
+      <form action="">
+        <input
+          type="email"
+          class="email"
+          placeholder="Nhập email của bạn"
+          required
+        />
+        <input type="submit" value="Đăng Ký" class="btn" />
+      </form>
+    </section>
+
+    <section class="footer">
+      <a href="#" class="logo"> <i class="bx bxs-movie"></i> Movies </a>
+      <div class="social">
+        <a href="https://www.facebook.com/tdat272/" target="_blank"
+          ><i class="bx bxl-facebook"></i
+        ></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+        <a href="#"><i class="bx bxl-pinterest-alt"></i></a>
+      </div>
+    </section>
+    <div class="copyright">
+      <p>&#169; Copyright 2025</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

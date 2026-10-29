@@ -1,0 +1,273 @@
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+}
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  color: white;
+}
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#add-movie-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+td img {
+  max-width: 50px;
+}
+.action-btns button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#movie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#movie-form input,
+#movie-form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#movie-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Thêm vào cuối file admin.css */
+.role-select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.delete-user-btn {
+  background-color: #dc3545;
+  color: white;
+}
+/* ====================================================== */
+/* === THÊM PHẦN NÀY VÀO CUỐI FILE movie.css === */
+/* ====================================================== */
+
+/* Container bao quanh Poster và Thông tin */
+.movie-container {
+    max-width: 1068px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex; /* Dàn trang ngang */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Khoảng cách giữa ảnh và chữ */
+    min-height: 60vh; /* Đảm bảo chiều cao tối thiểu */
+}
+
+/* Phần Poster bên trái */
+.movie-poster {
+    flex: 0 0 300px; /* Chiều rộng cố định 300px */
+    max-width: 100%;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 44, 31, 0.3); /* Hiệu ứng bóng đỏ nhẹ */
+    object-fit: cover;
+}
+
+/* Phần Thông tin bên phải */
+.movie-details {
+    flex: 1; /* Chiếm phần còn lại */
+    color: var(--bg-color);
+}
+
+.movie-details h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+.movie-details .details-meta {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.movie-details h2 {
+    font-size: 1.4rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--main-color);
+    padding-left: 10px;
+}
+
+.movie-details p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #eee;
+    text-align: justify;
+}
+
+/* Style cho nút Xem Phim Ngay */
+.btn-watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: var(--main-color);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 30px; /* Bo tròn nút */
+    margin-top: 15px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 44, 31, 0.4);
+}
+
+.btn-watch:hover {
+    background: #d11f15;
+    transform: translateY(-3px);
+}
+
+.btn-watch i {
+    font-size: 1.4rem;
+}
+
+/* Container cho Trailer */
+.trailer-container {
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Tỷ lệ khung hình 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.trailer-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Container cho Video Player (Nếu đang xem trực tiếp tại trang này) */
+#movie-player-container {
+    margin-top: 30px;
+}
+
+/* Phần phim liên quan & Bình luận */
+.related-section,
+.reviews-section {
+    max-width: 1068px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.reviews-section h2,
+.related-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--main-color);
+    padding-left: 10px;
+}
+
+/* RESPONSIVE: Khi màn hình nhỏ (điện thoại) */
+@media (max-width: 768px) {
+    .movie-container {
+        flex-direction: column; /* Xếp dọc */
+        align-items: center;
+    }
+
+    .movie-poster {
+        width: 70%; /* Poster nhỏ lại chút trên mobile */
+    }
+
+    .movie-details {
+        width: 100%;
+    }
+}

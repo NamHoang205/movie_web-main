@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lại Mật Khẩu</title>
+    <link rel="stylesheet" href="../login/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .step-container { display: none; animation: fadeIn 0.5s; }
+        .step-container.active { display: block; }
+        
+        /* Giao diện lỗi tĩnh (Không dùng popup) */
+        #static-error {
+            display: none;
+            text-align: center;
+            color: #ff6b6b;
+            padding: 20px;
+            border: 1px dashed #ff6b6b;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle" style="left: 20%;"></div>
+        <div class="particle" style="left: 80%;"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            
+            <div id="static-error">
+                <i class='bx bx-error' style="font-size: 3rem;"></i>
+                <h3>Liên kết không hợp lệ</h3>
+                <p>Đường dẫn bị thiếu hoặc đã hỏng.</p>
+                <a href="../forgot_password/index.html" style="color: #ffd700; display:block; margin-top:10px;">Gửi lại yêu cầu</a>
+            </div>
+
+            <div id="step-1" class="step-container">
+                <h2>Xác Minh</h2>
+                <p class="form-text">Nhập email của bạn để xác nhận bảo mật.</p>
+                <form id="verifyForm">
+                    <div class="input-group">
+                        <input type="email" id="verify_email" placeholder="Email của bạn" required>
+                        <i class='bx bxs-user-check'></i>
+                    </div>
+                    <button type="submit" class="login-btn">Xác Thực</button>
+                </form>
+            </div>
+
+            <div id="step-2" class="step-container">
+                <h2>Mật Khẩu Mới</h2>
+                <p class="form-text">Xác minh thành công! Nhập mật khẩu mới.</p>
+                <form id="resetForm">
+                    <div class="input-group">
+                        <input type="password" id="new_password" placeholder="Mật khẩu mới (>6 ký tự)" required>
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="confirm_password" placeholder="Nhập lại mật khẩu" required>
+                        <i class='bx bxs-lock-check'></i>
+                    </div>
+                    <button type="submit" class="login-btn">Lưu Mật Khẩu</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        let confirmedEmail = "";
+
+        // LOGIC KHỞI TẠO: Kiểm tra Token trên URL
+        if (!token) {
+            // Nếu không có token -> Hiện lỗi tĩnh (Không 404, Không popup)
+            document.getElementById('static-error').style.display = 'block';
+        } else {
+            // Nếu có token -> Hiện form nhập Email
+            document.getElementById('step-1').classList.add('active');
+        }
+
+        // XỬ LÝ BƯỚC 1: Verify
+        document.getElementById('verifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('verify_email').value;
+            const btn = document.querySelector('#step-1 button');
+            
+            btn.innerText = "Đang kiểm tra...";
+            btn.disabled = true;
+
+            fetch('../../api/check_token.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ token: token, email: email })
+            })
+            .then(res => res.json())
+            .then(data => {
+                btn.innerText = "Xác Thực";
+                btn.disabled = false;
+                if (data.success) {
+                    confirmedEmail = email;
+                    document.getElementById('step-1').classList.remove('active');
+                    document.getElementById('step-2').classList.add('active');
+                    const Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 3000 });
+                    Toast.fire({ icon: 'success', title: 'Xác minh thành công' });
+                } else {
+                    Swal.fire("Lỗi", "Email không khớp hoặc token hết hạn!", "error");
+                }
+            });
+        });
+
+        // XỬ LÝ BƯỚC 2: Reset Password
+        document.getElementById('resetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newPass = document.getElementById('new_password').value;
+            const confirmPass = document.getElementById('confirm_password').value;
+
+            if (newPass.length < 6) return Swal.fire("Lỗi", "Mật khẩu quá ngắn!", "warning");
+            if (newPass !== confirmPass) return Swal.fire("Lỗi", "Mật khẩu không khớp!", "error");
+
+            const btn = document.querySelector('#step-2 button');
+            btn.innerText = "Đang lưu...";
+            btn.disabled = true;
+
+            fetch('../../api/reset_password.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ token: token, email: confirmedEmail, new_password: newPass })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire("Thành công", "Đổi mật khẩu thành công!", "success")
+                    .then(() => window.location.href = "../login/index.html");
+                } else {
+                    btn.disabled = false;
+                    Swal.fire("Lỗi", data.message, "error");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

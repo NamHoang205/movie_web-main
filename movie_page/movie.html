@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading Movie...</title>
+    <link rel="stylesheet" href="movie.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <header>
+      <a href="../home/index.html" class="logo">
+        <i class="bx bxs-movie"></i> Movies
+      </a>
+    </header>
+
+    <div class="movie-container">
+    
+    <div class="movie-upper-section">
+        <div class="movie-poster">
+            <img id="movie-poster-img" src="" alt="Movie Poster" />
+            <div id="movie-favorite-btn" class="favorite-heart" style="display: none;">
+                <i class='bx bx-heart'></i>
+            </div>
+            </div>
+
+        <div class="movie-info-box">
+            <h1 id="movie-title">Đang tải...</h1>
+            
+            <div class="details-meta">
+                <span id="movie-genre"></span>
+                <span class="divider">|</span>
+                <span id="movie-duration"></span>
+            </div>
+
+            <div class="movie-meta-grid">
+                <div class="meta-item"><span class="label">Quốc gia:</span> <span id="movie-country" class="val">---</span></div>
+                <div class="meta-item"><span class="label">Năm SX:</span> <span id="movie-year" class="val">---</span></div>
+                <div class="meta-item"><span class="label">Đạo diễn:</span> <span id="movie-director" class="val">---</span></div>
+                <div class="meta-item"><span class="label">Diễn viên:</span> <span id="movie-actors" class="val">---</span></div>
+            </div>
+
+            <a href="#" id="watch-movie-btn" class="btn-watch" style="display: none;">
+                <i class='bx bx-play-circle'></i> Xem Phim Ngay
+            </a>
+        </div>
+    </div>
+
+    <div class="movie-lower-section">
+        <div class="description-block">
+            <h2>Nội dung phim</h2>
+            <p id="movie-description">Đang cập nhật...</p>
+        </div>
+
+        <div class="trailer-block">
+            <h2>Xem Trailer</h2>
+            <div class="trailer-container">
+                <iframe
+                    id="movie-trailer"
+                    width="100%"
+                    height="100%"
+                    src=""
+                    title="YouTube video player"
+                    frameborder="0"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+
+        <div id="movie-player-container" style="display: none; margin-top: 30px;">
+            <h2>Đang phát</h2>
+            <video id="movie-player" controls width="100%">
+                Trình duyệt không hỗ trợ video.
+            </video>
+        </div>
+    </div>
+
+</div>
+    <div class="related-section">
+  <h2>Có thể bạn cũng thích</h2>
+  <div class="swiper related-swiper">
+    <div class="swiper-wrapper" id="related-wrapper">
+      </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+    <div class="reviews-section">
+      <h2>Đánh giá & Bình luận</h2>
+      <div id="add-review-form-container"></div>
+      <div id="reviews-list"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="movie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </body>
+</html>

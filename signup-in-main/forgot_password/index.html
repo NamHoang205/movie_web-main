@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu</title>
+    <link rel="stylesheet" href="../login/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-duration: 15s;"></div>
+        <div class="particle" style="left: 50%; animation-duration: 18s;"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Quên Mật Khẩu</h2>
+            <p class="form-text">Nhập địa chỉ email của bạn để nhận liên kết đặt lại mật khẩu.</p>
+            
+            <form id="forgotForm">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email của bạn" required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <button type="submit" class="login-btn">Gửi Yêu Cầu</button>
+            </form>
+
+            <div class="back-to-login">
+                <p>Nhớ mật khẩu? <a href="../login/index.html"><i class='bx bx-arrow-back'></i> Đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('forgotForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const btn = document.querySelector('.login-btn');
+            
+            // Hiệu ứng nút đang gửi
+            const originalText = btn.innerText;
+            btn.innerText = "Đang gửi...";
+            btn.disabled = true;
+
+            // Gửi yêu cầu đến API
+            fetch('../../api/request_reset.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(res => res.json())
+            .then(data => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+
+                if (data.success) {
+                    Swal.fire({
+                        title: "Đã gửi email!",
+                        text: "Vui lòng kiểm tra hộp thư đến (và cả mục Spam) để lấy link đổi mật khẩu.",
+                        icon: "success"
+                    });
+                } else {
+                    Swal.fire("Lỗi", data.message, "error");
+                }
+            })
+            .catch(err => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+                Swal.fire("Lỗi kết nối", "Không thể kết nối đến máy chủ.", "error");
+            });
+        });
+    </script>
+</body>
+</html>

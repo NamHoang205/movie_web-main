@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trang cá nhân</title>
+    <link rel="stylesheet" href="profile.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <header>
+      <a href="../home/index.html" class="logo">
+        <i class="bx bxs-movie"></i> Movies
+      </a>
+      <a href="../home/index.html" class="back-home"><i class='bx bx-arrow-back'></i> Về trang chủ</a>
+    </header>
+
+    <main class="profile-container">
+      <div class="profile-header">
+          <div class="avatar-circle">
+              <i class='bx bxs-user'></i>
+          </div>
+          <h1 id="username-title">Loading...</h1>
+      </div>
+
+      <div class="profile-grid">
+          <div class="left-col">
+              <div class="profile-section">
+                <h2><i class='bx bx-id-card'></i> Thông tin tài khoản</h2>
+                <div class="info-group">
+                    <p><strong>Username:</strong> <span id="username"></span></p>
+                    <p><strong>Email:</strong> <span id="email"></span></p>
+                </div>
+              </div>
+
+              <div class="profile-section">
+                <h2><i class='bx bx-lock-alt'></i> Đổi mật khẩu</h2>
+                <form id="change-password-form">
+                  <input
+                    type="password"
+                    id="current_password"
+                    placeholder="Mật khẩu hiện tại"
+                    required
+                  />
+                  <input
+                    type="password"
+                    id="new_password"
+                    placeholder="Mật khẩu mới"
+                    required
+                  />
+                  <input
+                    type="password"
+                    id="confirm_password"
+                    placeholder="Xác nhận mật khẩu mới"
+                    required
+                  />
+                  <button type="submit">Lưu thay đổi</button>
+                </form>
+              </div>
+          </div>
+
+          <div class="right-col">
+              <div class="profile-section">
+                  <h2><i class='bx bxs-heart'></i> Phim yêu thích của bạn</h2>
+                  <div id="favorites-list" class="favorites-grid">
+                      <p style="color:#aaa">Đang tải...</p>
+                  </div>
+              </div>
+
+              <div class="profile-section">
+                <h2><i class='bx bx-history'></i> Lịch sử bình luận</h2>
+                <div id="reviews-history"></div>
+              </div>
+          </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="profile.js"></script>
+  </body>
+</html>

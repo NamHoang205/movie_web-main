@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đang tải phim...</title>
+    <link rel="stylesheet" href="watch.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+</head>
+<body>
+
+    <header>
+      <a href="../home/index.html" class="logo">
+        <i class="bx bxs-movie"></i> Movies
+      </a>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <video id="video-player" controls autoplay></video>
+        </div>
+
+        <div class="movie-info-container">
+            <h1 id="movie-title">Đang tải thông tin...</h1>
+            <p id="movie-description"></p>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <script src="watch.js"></script>
+</body>
+</html>

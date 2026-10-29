@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="particles" id="particles"></div>
+    <div class="login-container">
+      <div class="login-card">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+    <div class="input-group">
+        <input type="email" id="email" placeholder="Email" required>
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-group">
+        <input type="password" id="password" placeholder="Mật khẩu" required>
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+    
+    <div class="remember-me">
+        <label><input type="checkbox"> Ghi nhớ đăng nhập</label>
+    </div>
+
+    <button type="submit" class="login-btn">Đăng Nhập</button>
+
+    <a href="../forgot_password/index.html" class="forgot-password">Quên mật khẩu?</a>
+</form>
+        <div class="social-login">
+          <button class="social-btn" onclick="socialLogin('Google')">
+            <i class="fab fa-google"></i> Google
+          </button>
+          <button class="social-btn" onclick="socialLogin('Facebook')">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>
+        </div>
+        <div class="signup-link">
+          Don't have an account? <a href="../sign_up/index.html">Sign up</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm & Lọc phim</title>
+    <link rel="stylesheet" href="search.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header>
+        <a href="../home/index.html" class="logo"><i class="bx bxs-movie"></i> Movies</a>
+        <a href="../home/index.html" class="back-btn">Về trang chủ</a>
+    </header>
+
+    <div class="search-layout">
+        <aside class="filter-sidebar">
+            <h3><i class='bx bx-filter-alt'></i> Bộ Lọc</h3>
+            
+            <form id="filter-form">
+                <div class="form-group">
+                    <label>Từ khóa</label>
+                    <input type="text" id="filter-title" placeholder="Tên phim...">
+                </div>
+
+                <div class="form-group">
+                    <label>Thể loại</label>
+                    <select id="filter-genre">
+                        <option value="">Tất cả</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Quốc gia</label>
+                    <select id="filter-country">
+                        <option value="">Tất cả</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Năm phát hành</label>
+                    <select id="filter-year"> <option value="">Tất cả</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label>Đạo diễn</label>
+                    <input type="text" id="filter-director" placeholder="Tên đạo diễn...">
+                </div>
+
+                <div class="form-group">
+                    <label>Diễn viên</label>
+                    <input type="text" id="filter-actor" placeholder="Tên diễn viên...">
+                </div>
+
+                <button type="submit" class="btn-filter">Lọc Phim</button>
+                <button type="button" id="btn-reset" class="btn-reset">Đặt lại</button>
+            </form>
+        </aside>
+
+        <main class="results-area">
+            <h2 id="result-count">Kết quả tìm kiếm</h2>
+            <div id="movies-grid" class="movies-grid">
+                </div>
+        </main>
+    </div>
+
+    <script src="search.js"></script>
+</body>
+</html>

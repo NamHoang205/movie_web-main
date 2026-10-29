@@ -1,0 +1,86 @@
+/* Import font và các biến giống trang chủ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  --main-color: #ff2c1f;
+  --text-color: #020307;
+  --bg-color: #fff;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* --- Header giống hệt trang chủ --- */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 100px;
+  background: #111; /* Nền header tối hơn 1 chút */
+}
+.logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  text-decoration: none;
+}
+.logo .bx {
+  font-size: 24px;
+  color: var(--main-color);
+}
+/* ------------------------------ */
+
+main {
+  padding-top: 80px; /* Để không bị header che */
+}
+
+.video-container {
+  width: 100%;
+  background-color: #000;
+}
+
+#video-player {
+  width: 100%;
+  max-width: 1200px; /* Giới hạn chiều rộng video */
+  margin: auto;
+  display: block;
+  height: calc(100vh - 80px); /* Cao tối đa bằng màn hình trừ header */
+  max-height: 70vh; /* Nhưng cũng không nên quá cao */
+}
+
+.movie-info-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+#movie-title {
+  font-size: 2.2rem;
+  color: var(--main-color);
+  margin-bottom: 10px;
+}
+
+#movie-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+}
